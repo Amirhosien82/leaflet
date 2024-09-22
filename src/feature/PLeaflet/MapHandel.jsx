@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useMap, GeoJSON } from "react-leaflet";
 import L from "leaflet";
-import IRAN from "../../data/IRAN";
-import CenterIran from "../../data/CenterIran";
+import IRAN from "../../data/iran";
+import CenterIran from "../../data/centerIran";
 function MapHandel() {
   const map = useMap();
   const [isClick, setIsClick] = useState(false);
@@ -28,7 +28,7 @@ function MapHandel() {
         data={IRAN}
         pathOptions={{ color: "grey", weight: 2 }}
         eventHandlers={{
-          click: (feature) => {
+          mouseover: (feature) => {
             if (map.getZoom() < 9)
               setName(feature.layer.feature.properties.NAME_1);
           },
